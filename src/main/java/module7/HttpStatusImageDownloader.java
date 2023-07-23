@@ -19,7 +19,7 @@ public class HttpStatusImageDownloader {
             Files.copy(input, Paths.get("src/main/java/module7/" + imageName));
             log.info("Image downloaded successfully for status code - [{}]", code);
         } catch (FileNotFoundException e) {
-            log.error("An error occur while downloading image, please check entered status code");
+            throw new FileNotFoundException("An error occur while downloading image, please check entered status code");
         }
     }
 

@@ -22,7 +22,7 @@ public class HttpStatusChecker {
                     .build();
             log.info("Received request status code: [{}]", getStatusCode(request));
             if (getStatusCode(request) == 404) {
-                log.error("Entered status code don't exist! Please enter a valid status code!");
+                throw new IllegalArgumentException("Entered status code don't exist! Please enter a valid status code!");
             }
         } catch (IOException e) {
             throw new IOException(e.getMessage());
