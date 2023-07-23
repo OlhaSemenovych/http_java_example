@@ -7,6 +7,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.util.InputMismatchException;
 
 @Slf4j
 public class HttpStatusChecker {
@@ -22,7 +23,7 @@ public class HttpStatusChecker {
                     .build();
             log.info("Received request status code: [{}]", getStatusCode(request));
             if (getStatusCode(request) == 404) {
-                throw new IllegalArgumentException("Entered status code don't exist! Please enter a valid status code!");
+                throw new InputMismatchException("Entered status code don't exist! Please enter a valid status code!");
             }
         } catch (IOException e) {
             throw new IOException(e.getMessage());
